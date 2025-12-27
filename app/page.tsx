@@ -5,19 +5,23 @@ export default function Home() {
     <main className="bg-[#0B0F14] text-white overflow-x-hidden">
 
       {/* ================= HERO ================= */}
-      <section className="relative min-h-[88vh] flex items-center px-6">
-        {/* Soft radial depth */}
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_30%_20%,rgba(56,189,248,0.18),transparent_60%)]" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_80%_80%,rgba(6,182,212,0.12),transparent_60%)]" />
+      <section className="relative min-h-[90vh] flex items-center px-6">
 
-        <div className="max-w-5xl mx-auto animate-fadeUp">
-          <p className="text-sm text-white/60 mb-4">
+        {/* decorative glow */}
+        <div className="absolute -top-24 -left-20 h-[26rem] w-[26rem] rounded-full bg-gradient-to-tr from-blue-500 via-cyan-400 to-purple-500 opacity-25 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-[22rem] w-[22rem] rounded-full bg-gradient-to-tr from-purple-600 to-blue-400 opacity-20 blur-3xl" />
+
+        {/* dot grid */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(#ffffff10_1px,transparent_1px)] bg-[size:18px_18px]" />
+
+        <div className="relative max-w-5xl mx-auto animate-fadeUp">
+          <span className="text-xs tracking-wider text-cyan-300/90 border border-cyan-500/30 px-3 py-1 rounded-full">
             Data-led • Business-oriented • Technology-enabled
-          </p>
+          </span>
 
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight">
-            I connect data, business, and technology<br/>
-            to build impactful products.
+          <h1 className="mt-6 text-4xl md:text-6xl font-semibold leading-tight tracking-tight">
+            I connect <span className="text-cyan-300">data</span>, business, and
+            technology to build impactful products.
           </h1>
 
           <p className="mt-6 text-lg text-white/70 max-w-2xl">
@@ -25,12 +29,21 @@ export default function Home() {
             and delivering outcomes that move the business forward.
           </p>
 
-          <a
-            href="mailto:ubaidillahym@gmail.com"
-            className="inline-block mt-10 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-400 px-6 py-3 text-sm font-medium text-black hover:opacity-90 transition"
-          >
-            Email Me →
-          </a>
+          <div className="mt-10 flex gap-4">
+            <a
+              href="mailto:ubaidillahym@gmail.com"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-400 text-black font-medium shadow-lg shadow-cyan-500/20 hover:opacity-90 transition"
+            >
+              Email Me →
+            </a>
+
+            <a
+              href="#work"
+              className="px-6 py-3 rounded-xl border border-white/20 hover:border-white/50 transition"
+            >
+              View Case Studies
+            </a>
+          </div>
         </div>
       </section>
 
@@ -69,10 +82,6 @@ export default function Home() {
       <section className="px-6 py-16 md:py-20">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-medium mb-8">How I Work</h2>
-
-          <p className="text-white/70 mb-8">
-            I work by balancing clarity, collaboration, and execution.
-          </p>
 
           <div className="grid md:grid-cols-3 gap-6">
             <Card
@@ -140,7 +149,7 @@ export default function Home() {
         </a>
       </section>
 
-      {/* simple animation */}
+      {/* simple intro animation */}
       <style jsx global>{`
         .animate-fadeUp {
           animation: fadeUp 0.7s ease-out both;

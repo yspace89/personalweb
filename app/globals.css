@@ -156,4 +156,15 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+/* ===== Scroll reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: .7s ease-out;
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
 

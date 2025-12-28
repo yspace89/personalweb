@@ -1,34 +1,29 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <main className="bg-[#0B0F14] text-white overflow-x-hidden relative">
+    <main className="min-h-screen bg-hero relative overflow-hidden text-white">
 
-      {/* --- decorative tech pattern --- */}
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,0.18),transparent_60%),radial-gradient(circle_at_90%_70%,rgba(6,182,212,0.12),transparent_60%)]" />
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.09] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.2)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.2)_98%)] bg-[length:28px_28px]" />
+      {/* animated gradient layer */}
+      <div className="absolute inset-0 animate-gradient" />
+
+      {/* tech grid pattern */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,.18),transparent_60%),radial-gradient(circle_at_90%_70%,rgba(6,182,212,.12),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.16)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.16)_98%)] bg-[length:28px_28px]" />
 
       {/* ================= HERO ================= */}
-     export default function Home() {
-  return (
-    <main className="min-h-screen bg-hero relative overflow-hidden">
-      {/* Gradient animated background */}
-      <div className="absolute inset-0 animate-gradient"></div>
+      <section className="relative max-w-5xl mx-auto px-6 py-16 md:py-20">
 
-      <div className="relative max-w-5xl mx-auto px-6 py-20">
-
-        {/* Badge section */}
+        {/* badges */}
         <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md hover:scale-[1.02] transition">
-          
           {["Data-led", "Business-oriented", "Technology-enabled"].map(
             (item, i) => (
               <div key={i} className="flex items-center gap-2">
                 <span className="text-gray-300 text-sm">{item}</span>
-
                 {i < 2 && (
-                  <span className="h-2 w-2 bg-sky-400 rounded-full bullet"></span>
+                  <span className="h-2 w-2 bg-sky-400 rounded-full bullet" />
                 )}
               </div>
             )
@@ -36,7 +31,9 @@ export default function Home() {
         </div>
 
         <h1 className="mt-10 text-5xl md:text-6xl font-bold tracking-tight leading-tight">
-          <span className="block">I connect data, business, and</span>
+          <span className="block">
+            I connect data, business, and
+          </span>
           <span className="block mt-2">technology</span>
           <span className="block mt-2 text-sky-300">
             to build impactful products.
@@ -44,17 +41,14 @@ export default function Home() {
         </h1>
 
         <p className="mt-6 text-lg text-gray-300 max-w-3xl">
-          I focus on aligning stakeholders, prioritizing with data, and delivering outcomes
-          that move the business forward.
+          I focus on aligning stakeholders, prioritizing with data, and
+          delivering outcomes that move the business forward.
         </p>
 
         <button className="mt-10 px-8 py-3 rounded-xl bg-sky-400 text-black font-semibold shadow-lg hover:scale-105 transition">
           Email Me →
         </button>
-      </div>
-    </main>
-  );
-}
+      </section>
 
       {/* ================= ABOUT ================= */}
       <section className="px-6 py-16 md:py-20">
@@ -73,8 +67,8 @@ export default function Home() {
 
             <p className="text-white/70">
               My experience across operations and product leadership shaped how I
-              approach decisions today: understanding constraints, aligning stakeholders,
-              and making choices that optimize for business impact.
+              approach decisions today: understanding constraints, aligning
+              stakeholders, and making choices that optimize for business impact.
             </p>
           </motion.div>
 
@@ -169,7 +163,7 @@ export default function Home() {
         </motion.a>
       </section>
     </main>
-  )
+  );
 }
 
 /* ===== helpers ===== */
@@ -179,7 +173,7 @@ function DecorItem({ children }: { children: React.ReactNode }) {
     <div className="border-l border-white/15 pl-4 hover:border-cyan-400 transition">
       {children}
     </div>
-  )
+  );
 }
 
 function Card({ title, text }: { title: string; text: string }) {
@@ -191,7 +185,7 @@ function Card({ title, text }: { title: string; text: string }) {
       <h3 className="font-medium mb-2">{title}</h3>
       <p className="text-sm text-white/70">{text}</p>
     </motion.div>
-  )
+  );
 }
 
 function Timeline({
@@ -199,16 +193,16 @@ function Timeline({
   company,
   text,
 }: {
-  role: string
-  company: string
-  text: string
+  role: string;
+  company: string;
+  text: string;
 }) {
   return (
     <motion.div
       whileHover={{ x: 3 }}
       className="border-l border-white/15 pl-5 pb-6 mb-4 relative"
     >
-      <span className="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-cyan-400"></span>
+      <span className="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-cyan-400" />
 
       <div className="flex items-center justify-between mb-1">
         <h3 className="font-medium">{role}</h3>
@@ -217,5 +211,5 @@ function Timeline({
 
       <p className="text-sm text-white/70">{text}</p>
     </motion.div>
-  )
+  );
 }

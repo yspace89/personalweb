@@ -11,37 +11,44 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.09] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.2)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.2)_98%)] bg-[length:28px_28px]" />
 
       {/* ================= HERO ================= */}
-      <section className="relative min-h-[88vh] flex items-center px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-5xl mx-auto"
-        >
-          <p className="text-sm text-white/60 mb-4">
-            Data-led • Business-oriented • Technology-enabled
-          </p>
+      <section className="relative py-32 overflow-hidden">
+  {/* animated gradient background */}
+  <div className="absolute inset-0 opacity-40 animate-pulse-slow blur-3xl bg-gradient-to-tr from-sky-500/10 via-cyan-400/10 to-blue-500/10" />
 
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight">
-            I connect data, business, and technology<br/>
-            to build impactful products.
-          </h1>
+  {/* floating decorations */}
+  <div className="absolute -top-10 left-10 w-28 h-28 bg-cyan-400/20 rounded-full blur-2xl animate-float" />
+  <div className="absolute bottom-10 right-20 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl animate-float-delayed" />
 
-          <p className="mt-6 text-lg text-white/70 max-w-2xl">
-            I focus on aligning stakeholders, prioritizing with data,
-            and delivering outcomes that move the business forward.
-          </p>
+  <div className="relative z-10 max-w-5xl">
+    <p className="text-sm text-gray-400">
+      Data-led • Business-oriented • Technology-enabled
+    </p>
 
-          <motion.a
-            href="mailto:ubaidillahym@gmail.com"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-block mt-10 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-400 px-6 py-3 text-sm font-medium text-black shadow-lg shadow-cyan-500/20"
-          >
-            Email Me →
-          </motion.a>
-        </motion.div>
-      </section>
+    <h1 className="mt-6 text-5xl font-bold leading-tight text-white animate-rise">
+      I connect data, business, and <br />
+      technology <br />
+      to build impactful products.
+    </h1>
+
+    <p className="mt-6 text-gray-300 animate-fade">
+      I focus on aligning stakeholders, prioritizing with data, 
+      and delivering outcomes that move the business forward.
+    </p>
+
+    <a
+      href="mailto:yahyaux@gmail.com"
+      className="inline-block mt-10 px-6 py-3 text-black font-medium rounded-xl bg-cyan-300 hover:bg-cyan-200 transition-all shadow-lg hover:shadow-cyan-300/30 transform hover:-translate-y-0.5"
+    >
+      Email Me →
+    </a>
+  </div>
+
+  {/* scroll indicator */}
+  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-gray-400 text-xs animate-bounce">
+    Scroll
+  </div>
+</section>
+
 
       {/* ================= ABOUT ================= */}
       <section className="px-6 py-16 md:py-20">

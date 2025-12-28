@@ -2,19 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scroll + nicer feel */
+/* ================= BASE ================= */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Fade up animation */
+/* page transition feel */
+body {
+  transition: background 0.25s ease;
+}
+
+/* ================= ANIMATIONS ================= */
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 .animate-fadeUp { animation: fadeUp .7s ease-out both; }
 
-/* Subtle glowing border card */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-rise { animation: rise .8s ease-out; }
+
+@keyframes fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade { animation: fade 1.2s ease-in; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%     { transform: translateY(-10px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50%     { transform: translateY(12px); }
+}
+.animate-float-delayed {
+  animation: float-delayed 7s ease-in-out infinite;
+}
+
+/* ================= HERO BACKGROUND ================= */
+
+.bg-hero {
+  background:
+    radial-gradient(70% 60% at 20% 30%, #0b132b, transparent),
+    radial-gradient(50% 50% at 80% 70%, #1d3557, transparent),
+    #0a0f1f;
+}
+
+@keyframes drift {
+  from { transform: translateX(-10px) scale(1); }
+  to   { transform: translateX(10px) scale(1.03); }
+}
+.animate-gradient {
+  animation: drift 16s infinite alternate ease-in-out;
+}
+
+/* ================= UI PATTERNS ================= */
+
 .card {
   @apply rounded-xl border border-white/10 bg-white/5 backdrop-blur-md;
   transition: .25s ease;
@@ -24,54 +75,12 @@ html {
   box-shadow: 0 0 32px rgba(56,189,248,.15);
 }
 
-/* Section titles */
 .section-title {
   @apply text-2xl font-semibold mb-6 tracking-tight;
 }
 
-@keyframes rise {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+/* ================= INTERACTIVE BULLET ================= */
 
-@keyframes fade {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes float-delayed {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(12px); }
-}
-
-.animate-rise { animation: rise .8s ease-out; }
-.animate-fade { animation: fade 1.2s ease-in; }
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-float-delayed { animation: float-delayed 7s ease-in-out infinite; }
-.animate-pulse-slow { animation: pulse 6s ease-in-out infinite; }
-
-/* Moving gradient background */
-.bg-hero {
-  background: radial-gradient(70% 60% at 20% 30%, #0b132b, transparent),
-              radial-gradient(50% 50% at 80% 70%, #1d3557, transparent),
-              #0a0f1f;
-}
-
-.animate-gradient {
-  animation: drift 16s infinite alternate ease-in-out;
-}
-
-@keyframes drift {
-  from { transform: translateX(-10px) scale(1); }
-  to   { transform: translateX(10px) scale(1.03); }
-}
-
-/* Animated blue bullets */
 .bullet {
   animation: pulse 4s infinite ease-in-out;
 }
@@ -80,6 +89,3 @@ html {
   0%,100% { transform: scale(1); opacity: .9; }
   50%     { transform: scale(1.2); opacity: 1; }
 }
-
-
-

@@ -6,89 +6,85 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-hero relative overflow-hidden text-white">
 
-{/* layered parallax background */}
-<div className="parallax-layer bg-hero"></div>
-<div className="parallax-layer slow bg-hero"></div>
+      {/* layered parallax background */}
+      <div className="parallax-layer bg-hero" />
+      <div className="parallax-layer slow bg-hero" />
 
-{/* floating shapes */}
-<div className="absolute top-24 left-10 h-16 w-16 rounded-full bg-sky-400/10 floating"></div>
-<div className="absolute bottom-20 right-16 h-20 w-20 rounded-full bg-cyan-300/10 floating delay"></div>
-
+      {/* floating shapes */}
+      <div className="absolute top-24 left-10 h-16 w-16 rounded-full bg-sky-400/10 floating" />
+      <div className="absolute bottom-20 right-16 h-20 w-20 rounded-full bg-cyan-300/10 floating delay" />
 
       {/* tech grid pattern */}
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,.18),transparent_60%),radial-gradient(circle_at_90%_70%,rgba(6,182,212,.12),transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.16)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.16)_98%)] bg-[length:28px_28px]" />
 
-      /* ================= HERO ================= */
-<section className="min-h-[82vh] relative">
+      {/* ================= HERO ================= */}
+      <section className="min-h-[82vh] relative">
 
-  {/* animated gradient motion background */}
-  <div className="absolute inset-0 animate-gradient bg-hero"></div>
+        {/* animated gradient motion */}
+        <div className="absolute inset-0 animate-gradient bg-hero" />
 
-  {/* subtle tech pattern */}
-  <div className="absolute inset-0 opacity-[0.08] pointer-events-none bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.2)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.2)_98%)] bg-[length:28px_28px]" />
+        <div className="relative max-w-5xl mx-auto px-6 py-20">
 
-  <div className="relative max-w-5xl mx-auto px-6 py-20">
+          {/* BADGE */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-4 px-5 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md"
+          >
+            {["Data-led", "Business-oriented", "Technology-enabled"].map(
+              (item, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-sky-400 bullet" />
+                  <span className="text-gray-300 text-sm">{item}</span>
+                </div>
+              )
+            )}
+          </motion.div>
 
-    {/* ===== BADGE ROW ===== */}
-    <motion.div
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="inline-flex items-center gap-4 px-5 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md"
-    >
-      {["Data-led", "Business-oriented", "Technology-enabled"].map(
-        (item, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-sky-400 bullet"></span>
-            <span className="text-gray-300 text-sm">{item}</span>
-          </div>
-        )
-      )}
-    </motion.div>
+          {/* TITLE */}
+          <motion.h1
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="mt-10 text-5xl md:text-6xl font-bold tracking-tight leading-tight heading-hover"
+          >
+            <span className="block">I connect data, business, and</span>
+            <span className="block mt-2">technology</span>
+            <span className="block mt-2 text-sky-300">
+              to build impactful products.
+            </span>
+          </motion.h1>
 
-    {/* ===== TITLE ===== */}
-    <motion.h1
-      initial={{ opacity: 0, x: 80 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, ease: "easeOut" }}
-      className="mt-10 text-5xl md:text-6xl font-bold tracking-tight leading-tight"
-    >
-      <span className="block">I connect data, business, and</span>
-      <span className="block mt-2">technology</span>
-      <span className="block mt-2 text-sky-300">
-        to build impactful products.
-      </span>
-    </motion.h1>
+          {/* SUBTEXT */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="mt-6 text-lg text-gray-300 max-w-3xl"
+          >
+            I focus on aligning stakeholders, prioritizing with data, and delivering outcomes
+            that move the business forward.
+          </motion.p>
 
-    {/* ===== SUBTEXT ===== */}
-    <motion.p
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1, duration: 0.6 }}
-      className="mt-6 text-lg text-gray-300 max-w-3xl"
-    >
-      I focus on aligning stakeholders, prioritizing with data, and delivering outcomes
-      that move the business forward.
-    </motion.p>
-
-    {/* ===== CTA BUTTON ===== */}
-    <motion.button
-      whileHover={{ scale: 1.06 }}
-      whileTap={{ scale: 0.97 }}
-      className="mt-10 px-8 py-3 rounded-xl bg-sky-400 text-black font-semibold shadow-lg hover:shadow-cyan-400/30 transition"
-    >
-      Email Me →
-    </motion.button>
-  </div>
-</section>
-
+          {/* CTA */}
+          <motion.button
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.97 }}
+            className="mt-10 px-8 py-3 rounded-xl bg-sky-400 text-black font-semibold shadow-lg hover:shadow-cyan-400/30 transition ripple-btn"
+          >
+            Email Me →
+          </motion.button>
+        </div>
+      </section>
 
       {/* ================= ABOUT ================= */}
-      <section className="px-6 py-16 md:py-20">
+      <section className="px-6 py-16 md:py-20 reveal">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
+
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -123,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* ================= HOW I WORK ================= */}
-      <section className="px-6 py-16 md:py-20">
+      <section className="px-6 py-16 md:py-20 reveal">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-medium mb-8">How I Work</h2>
 
@@ -149,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* ================= CAREER ================= */}
-      <section className="px-6 py-16 md:py-20 border-t border-white/10">
+      <section className="px-6 py-16 md:py-20 border-t border-white/10 reveal">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-xl font-medium mb-10">Career Journey</h2>
 
@@ -180,7 +176,7 @@ export default function Home() {
       </section>
 
       {/* ================= CTA ================= */}
-      <section className="px-6 py-20 text-center">
+      <section className="px-6 py-20 text-center reveal">
         <h2 className="text-2xl font-semibold mb-3">
           Let’s build meaningful products.
         </h2>

@@ -11,44 +11,50 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.09] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.2)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.2)_98%)] bg-[length:28px_28px]" />
 
       {/* ================= HERO ================= */}
-      <section className="relative py-32 overflow-hidden">
-  {/* animated gradient background */}
-  <div className="absolute inset-0 opacity-40 animate-pulse-slow blur-3xl bg-gradient-to-tr from-sky-500/10 via-cyan-400/10 to-blue-500/10" />
+     export default function Home() {
+  return (
+    <main className="min-h-screen bg-hero relative overflow-hidden">
+      {/* Gradient animated background */}
+      <div className="absolute inset-0 animate-gradient"></div>
 
-  {/* floating decorations */}
-  <div className="absolute -top-10 left-10 w-28 h-28 bg-cyan-400/20 rounded-full blur-2xl animate-float" />
-  <div className="absolute bottom-10 right-20 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl animate-float-delayed" />
+      <div className="relative max-w-5xl mx-auto px-6 py-20">
 
-  <div className="relative z-10 max-w-5xl">
-    <p className="text-sm text-gray-400">
-      Data-led • Business-oriented • Technology-enabled
-    </p>
+        {/* Badge section */}
+        <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md hover:scale-[1.02] transition">
+          
+          {["Data-led", "Business-oriented", "Technology-enabled"].map(
+            (item, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="text-gray-300 text-sm">{item}</span>
 
-    <h1 className="mt-6 text-5xl font-bold leading-tight text-white animate-rise">
-      I connect data, business, and <br />
-      technology <br />
-      to build impactful products.
-    </h1>
+                {i < 2 && (
+                  <span className="h-2 w-2 bg-sky-400 rounded-full bullet"></span>
+                )}
+              </div>
+            )
+          )}
+        </div>
 
-    <p className="mt-6 text-gray-300 animate-fade">
-      I focus on aligning stakeholders, prioritizing with data, 
-      and delivering outcomes that move the business forward.
-    </p>
+        <h1 className="mt-10 text-5xl md:text-6xl font-bold tracking-tight leading-tight">
+          <span className="block">I connect data, business, and</span>
+          <span className="block mt-2">technology</span>
+          <span className="block mt-2 text-sky-300">
+            to build impactful products.
+          </span>
+        </h1>
 
-    <a
-      href="mailto:yahyaux@gmail.com"
-      className="inline-block mt-10 px-6 py-3 text-black font-medium rounded-xl bg-cyan-300 hover:bg-cyan-200 transition-all shadow-lg hover:shadow-cyan-300/30 transform hover:-translate-y-0.5"
-    >
-      Email Me →
-    </a>
-  </div>
+        <p className="mt-6 text-lg text-gray-300 max-w-3xl">
+          I focus on aligning stakeholders, prioritizing with data, and delivering outcomes
+          that move the business forward.
+        </p>
 
-  {/* scroll indicator */}
-  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-gray-400 text-xs animate-bounce">
-    Scroll
-  </div>
-</section>
-
+        <button className="mt-10 px-8 py-3 rounded-xl bg-sky-400 text-black font-semibold shadow-lg hover:scale-105 transition">
+          Email Me →
+        </button>
+      </div>
+    </main>
+  );
+}
 
       {/* ================= ABOUT ================= */}
       <section className="px-6 py-16 md:py-20">

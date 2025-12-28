@@ -8,9 +8,11 @@ export default function Home() {
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
     const obs = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("in-view")),
+      (entries) =>
+        entries.forEach((e) => e.isIntersecting && e.target.classList.add("in-view")),
       { threshold: 0.18 }
     );
+
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
   }, []);
@@ -25,8 +27,8 @@ export default function Home() {
       {/* floating shapes (kanan bawah DIHAPUS) */}
       <div className="absolute top-24 left-10 h-16 w-16 rounded-full bg-sky-400/10 floating" />
 
-      {/* subtle tech pattern */}
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.22)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.22)_98%)] bg-[length:28px_28px]" />
+      {/* tech grid */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.18)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.18)_98%)] bg-[length:28px_28px]" />
 
       {/* ================= HERO ================= */}
       <section className="min-h-[80vh] relative">
@@ -69,7 +71,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: .05 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
             className="mt-6 text-lg text-gray-300 max-w-3xl"
           >
             I focus on aligning stakeholders, prioritizing with data, and delivering outcomes
@@ -90,7 +92,7 @@ export default function Home() {
       {/* ================= ABOUT ================= */}
       <section className="px-6 py-16 md:py-20 reveal">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
-          <motion.div>
+          <div>
             <h2 className="text-xl font-medium mb-4">About</h2>
 
             <p className="text-white/80 mb-4">
@@ -102,7 +104,7 @@ export default function Home() {
               approach decisions today: understanding constraints, aligning
               stakeholders, and making choices that optimize for business impact.
             </p>
-          </motion.div>
+          </div>
 
           <div className="space-y-3">
             <DecorItem>Data guides decisions — it doesn’t replace judgment.</DecorItem>
@@ -139,7 +141,6 @@ export default function Home() {
       </section>
 
       {/* ================= CAREER ================= */}
-      {/* border dihapus */}
       <section className="px-6 py-16 md:py-20 reveal">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-xl font-medium mb-10">Career Journey</h2>
@@ -215,7 +216,17 @@ function Card({ title, text }: { title: string; text: string }) {
   );
 }
 
-function Timeline({ role, company, text }: { role: string; company: string; text: string }) {
+function Timeline({
+  role,
+  company,
+  text,
+}: {
+  role: string;
+  company: string;
+  text: string;
+}) {
+  const isPresent = role.includes("(Present)");
+
   return (
     <motion.div
       whileHover={{ x: 3 }}
@@ -225,7 +236,20 @@ function Timeline({ role, company, text }: { role: string; company: string; text
 
       <div className="flex items-center justify-between mb-1">
         <h3 className="font-medium flex items-center gap-2">
-          {role.includes("(Present)") ? (
-            <>
-              {role.replace(" (Present)", "")}
-              <span className="px-2 py-0.5 text-xs rounded-full bg-emer
+          {role.replace(" (Present)", "")}
+
+          {isPresent && (
+            <span className="px-2 py-0.5 text-xs rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              Present
+            </span>
+          )}
+        </h3>
+
+        <span className="text-xs text-white/50">{company}</span>
+      </div>
+
+      <p className="text-sm text-white/70">{text}</p>
+    </motion.div>
+  );
+}

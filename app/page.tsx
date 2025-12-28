@@ -1,8 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 
 export default function Home() {
+  // ===== scroll reveal =====
+  useEffect(() => {
+    const els = document.querySelectorAll(".reveal");
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("in-view");
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <main className="min-h-screen bg-hero relative overflow-hidden text-white">
 
@@ -14,14 +32,12 @@ export default function Home() {
       <div className="absolute top-24 left-10 h-16 w-16 rounded-full bg-sky-400/10 floating" />
       <div className="absolute bottom-20 right-16 h-20 w-20 rounded-full bg-cyan-300/10 floating delay" />
 
-      {/* tech grid pattern */}
+      {/* tech grid */}
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,.18),transparent_60%),radial-gradient(circle_at_90%_70%,rgba(6,182,212,.12),transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.16)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.16)_98%)] bg-[length:28px_28px]" />
 
       {/* ================= HERO ================= */}
       <section className="min-h-[82vh] relative">
-
-        {/* animated gradient motion */}
         <div className="absolute inset-0 animate-gradient bg-hero" />
 
         <div className="relative max-w-5xl mx-auto px-6 py-20">

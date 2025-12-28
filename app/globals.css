@@ -55,3 +55,31 @@ html {
 .animate-float-delayed { animation: float-delayed 7s ease-in-out infinite; }
 .animate-pulse-slow { animation: pulse 6s ease-in-out infinite; }
 
+/* Moving gradient background */
+.bg-hero {
+  background: radial-gradient(70% 60% at 20% 30%, #0b132b, transparent),
+              radial-gradient(50% 50% at 80% 70%, #1d3557, transparent),
+              #0a0f1f;
+}
+
+.animate-gradient {
+  animation: drift 16s infinite alternate ease-in-out;
+}
+
+@keyframes drift {
+  from { transform: translateX(-10px) scale(1); }
+  to   { transform: translateX(10px) scale(1.03); }
+}
+
+/* Animated blue bullets */
+.bullet {
+  animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: .9; }
+  50%     { transform: scale(1.2); opacity: 1; }
+}
+
+
+

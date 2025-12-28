@@ -13,42 +13,72 @@ export default function Home() {
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,.18),transparent_60%),radial-gradient(circle_at_90%_70%,rgba(6,182,212,.12),transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.16)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.16)_98%)] bg-[length:28px_28px]" />
 
-      {/* ================= HERO ================= */}
-      <section className="relative max-w-5xl mx-auto px-6 py-16 md:py-20">
+      /* ================= HERO ================= */
+<section className="min-h-[82vh] relative">
 
-        {/* badges */}
-        <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md hover:scale-[1.02] transition">
-          {["Data-led", "Business-oriented", "Technology-enabled"].map(
-            (item, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <span className="text-gray-300 text-sm">{item}</span>
-                {i < 2 && (
-                  <span className="h-2 w-2 bg-sky-400 rounded-full bullet" />
-                )}
-              </div>
-            )
-          )}
-        </div>
+  {/* animated gradient motion background */}
+  <div className="absolute inset-0 animate-gradient bg-hero"></div>
 
-        <h1 className="mt-10 text-5xl md:text-6xl font-bold tracking-tight leading-tight">
-          <span className="block">
-            I connect data, business, and
-          </span>
-          <span className="block mt-2">technology</span>
-          <span className="block mt-2 text-sky-300">
-            to build impactful products.
-          </span>
-        </h1>
+  {/* subtle tech pattern */}
+  <div className="absolute inset-0 opacity-[0.08] pointer-events-none bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.2)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.2)_98%)] bg-[length:28px_28px]" />
 
-        <p className="mt-6 text-lg text-gray-300 max-w-3xl">
-          I focus on aligning stakeholders, prioritizing with data, and
-          delivering outcomes that move the business forward.
-        </p>
+  <div className="relative max-w-5xl mx-auto px-6 py-20">
 
-        <button className="mt-10 px-8 py-3 rounded-xl bg-sky-400 text-black font-semibold shadow-lg hover:scale-105 transition">
-          Email Me →
-        </button>
-      </section>
+    {/* ===== BADGE ROW ===== */}
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="inline-flex items-center gap-4 px-5 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md"
+    >
+      {["Data-led", "Business-oriented", "Technology-enabled"].map(
+        (item, i) => (
+          <div key={i} className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-sky-400 bullet"></span>
+            <span className="text-gray-300 text-sm">{item}</span>
+          </div>
+        )
+      )}
+    </motion.div>
+
+    {/* ===== TITLE ===== */}
+    <motion.h1
+      initial={{ opacity: 0, x: 80 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className="mt-10 text-5xl md:text-6xl font-bold tracking-tight leading-tight"
+    >
+      <span className="block">I connect data, business, and</span>
+      <span className="block mt-2">technology</span>
+      <span className="block mt-2 text-sky-300">
+        to build impactful products.
+      </span>
+    </motion.h1>
+
+    {/* ===== SUBTEXT ===== */}
+    <motion.p
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.1, duration: 0.6 }}
+      className="mt-6 text-lg text-gray-300 max-w-3xl"
+    >
+      I focus on aligning stakeholders, prioritizing with data, and delivering outcomes
+      that move the business forward.
+    </motion.p>
+
+    {/* ===== CTA BUTTON ===== */}
+    <motion.button
+      whileHover={{ scale: 1.06 }}
+      whileTap={{ scale: 0.97 }}
+      className="mt-10 px-8 py-3 rounded-xl bg-sky-400 text-black font-semibold shadow-lg hover:shadow-cyan-400/30 transition"
+    >
+      Email Me →
+    </motion.button>
+  </div>
+</section>
+
 
       {/* ================= ABOUT ================= */}
       <section className="px-6 py-16 md:py-20">

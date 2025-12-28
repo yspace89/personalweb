@@ -14,8 +14,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-[#0b0e14] text-gray-100 antialiased">
-        <div className="max-w-5xl mx-auto px-4 py-10">{children}</div>
+      <body className="bg-[#0b0e14] text-gray-100 antialiased selection:bg-cyan-300/30 selection:text-white">
+        <div className="min-h-screen max-w-6xl mx-auto px-5 md:px-6">
+          {children}
+        </div>
       </body>
     </html>
   );

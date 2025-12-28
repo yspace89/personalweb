@@ -6,8 +6,14 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-hero relative overflow-hidden text-white">
 
-      {/* animated gradient layer */}
-      <div className="absolute inset-0 animate-gradient" />
+{/* layered parallax background */}
+<div className="parallax-layer bg-hero"></div>
+<div className="parallax-layer slow bg-hero"></div>
+
+{/* floating shapes */}
+<div className="absolute top-24 left-10 h-16 w-16 rounded-full bg-sky-400/10 floating"></div>
+<div className="absolute bottom-20 right-16 h-20 w-20 rounded-full bg-cyan-300/10 floating delay"></div>
+
 
       {/* tech grid pattern */}
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,.18),transparent_60%),radial-gradient(circle_at_90%_70%,rgba(6,182,212,.12),transparent_60%)]" />

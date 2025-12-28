@@ -22,9 +22,8 @@ export default function Home() {
       <div className="parallax-layer bg-hero" />
       <div className="parallax-layer slow bg-hero" />
 
-      {/* floating shapes */}
+      {/* floating shapes (kanan bawah DIHAPUS) */}
       <div className="absolute top-24 left-10 h-16 w-16 rounded-full bg-sky-400/10 floating" />
-      <div className="absolute bottom-20 right-16 h-24 w-24 rounded-full bg-cyan-300/10 floating delay" />
 
       {/* subtle tech pattern */}
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.22)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.22)_98%)] bg-[length:28px_28px]" />
@@ -140,7 +139,8 @@ export default function Home() {
       </section>
 
       {/* ================= CAREER ================= */}
-      <section className="px-6 py-16 md:py-20 border-t border-white/10 reveal">
+      {/* border dihapus */}
+      <section className="px-6 py-16 md:py-20 reveal">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-xl font-medium mb-10">Career Journey</h2>
 
@@ -222,11 +222,10 @@ function Timeline({ role, company, text }: { role: string; company: string; text
       className="border-l border-white/15 pl-5 pb-6 mb-4 relative"
     >
       <span className="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-cyan-400" />
+
       <div className="flex items-center justify-between mb-1">
-        <h3 className="font-medium">{role}</h3>
-        <span className="text-xs text-white/50">{company}</span>
-      </div>
-      <p className="text-sm text-white/70">{text}</p>
-    </motion.div>
-  );
-}
+        <h3 className="font-medium flex items-center gap-2">
+          {role.includes("(Present)") ? (
+            <>
+              {role.replace(" (Present)", "")}
+              <span className="px-2 py-0.5 text-xs rounded-full bg-emer

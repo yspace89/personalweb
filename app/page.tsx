@@ -4,19 +4,13 @@ import { motion } from "framer-motion";
 import { useEffect } from "react";
 
 export default function Home() {
-  // ===== scroll reveal =====
+  // Scroll reveal
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
-
     const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add("in-view");
-        });
-      },
-      { threshold: 0.2 }
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("in-view")),
+      { threshold: 0.18 }
     );
-
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
   }, []);
@@ -24,47 +18,44 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-hero relative overflow-hidden text-white">
 
-      {/* layered parallax background */}
+      {/* layered parallax */}
       <div className="parallax-layer bg-hero" />
       <div className="parallax-layer slow bg-hero" />
 
       {/* floating shapes */}
       <div className="absolute top-24 left-10 h-16 w-16 rounded-full bg-sky-400/10 floating" />
-      <div className="absolute bottom-20 right-16 h-20 w-20 rounded-full bg-cyan-300/10 floating delay" />
+      <div className="absolute bottom-20 right-16 h-24 w-24 rounded-full bg-cyan-300/10 floating delay" />
 
-      {/* tech grid */}
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,.18),transparent_60%),radial-gradient(circle_at_90%_70%,rgba(6,182,212,.12),transparent_60%)]" />
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.07] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.16)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.16)_98%)] bg-[length:28px_28px]" />
+      {/* subtle tech pattern */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.06] bg-[linear-gradient(transparent,transparent_96%,rgba(255,255,255,.22)_98%),linear-gradient(90deg,transparent,transparent_96%,rgba(255,255,255,.22)_98%)] bg-[length:28px_28px]" />
 
       {/* ================= HERO ================= */}
-      <section className="min-h-[82vh] relative">
+      <section className="min-h-[80vh] relative">
         <div className="absolute inset-0 animate-gradient bg-hero" />
 
         <div className="relative max-w-5xl mx-auto px-6 py-20">
 
-          {/* BADGE */}
+          {/* badges */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="inline-flex items-center gap-4 px-5 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md"
           >
-            {["Data-led", "Business-oriented", "Technology-enabled"].map(
-              (item, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-sky-400 bullet" />
-                  <span className="text-gray-300 text-sm">{item}</span>
-                </div>
-              )
-            )}
+            {["Data-led", "Business-oriented", "Technology-enabled"].map((item, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-sky-400 bullet" />
+                <span className="text-gray-300 text-sm">{item}</span>
+              </div>
+            ))}
           </motion.div>
 
-          {/* TITLE */}
+          {/* heading */}
           <motion.h1
-            initial={{ opacity: 0, x: 80 }}
+            initial={{ opacity: 0, x: 90 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.7 }}
             className="mt-10 text-5xl md:text-6xl font-bold tracking-tight leading-tight heading-hover"
           >
             <span className="block">I connect data, business, and</span>
@@ -74,12 +65,12 @@ export default function Home() {
             </span>
           </motion.h1>
 
-          {/* SUBTEXT */}
+          {/* description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.6 }}
+            transition={{ duration: 0.6, delay: .05 }}
             className="mt-6 text-lg text-gray-300 max-w-3xl"
           >
             I focus on aligning stakeholders, prioritizing with data, and delivering outcomes
@@ -88,7 +79,7 @@ export default function Home() {
 
           {/* CTA */}
           <motion.button
-            whileHover={{ scale: 1.06 }}
+            whileHover={{ scale: 1.07 }}
             whileTap={{ scale: 0.97 }}
             className="mt-10 px-8 py-3 rounded-xl bg-sky-400 text-black font-semibold shadow-lg hover:shadow-cyan-400/30 transition ripple-btn"
           >
@@ -100,13 +91,7 @@ export default function Home() {
       {/* ================= ABOUT ================= */}
       <section className="px-6 py-16 md:py-20 reveal">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
-
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <motion.div>
             <h2 className="text-xl font-medium mb-4">About</h2>
 
             <p className="text-white/80 mb-4">
@@ -120,17 +105,11 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <motion.div
-            className="space-y-3"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.15 }}
-          >
+          <div className="space-y-3">
             <DecorItem>Data guides decisions — it doesn’t replace judgment.</DecorItem>
             <DecorItem>Business impact is the north star.</DecorItem>
             <DecorItem>Technology is leverage, not the goal.</DecorItem>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -214,7 +193,7 @@ export default function Home() {
   );
 }
 
-/* ===== helpers ===== */
+/* Helpers */
 
 function DecorItem({ children }: { children: React.ReactNode }) {
   return (
@@ -236,27 +215,17 @@ function Card({ title, text }: { title: string; text: string }) {
   );
 }
 
-function Timeline({
-  role,
-  company,
-  text,
-}: {
-  role: string;
-  company: string;
-  text: string;
-}) {
+function Timeline({ role, company, text }: { role: string; company: string; text: string }) {
   return (
     <motion.div
       whileHover={{ x: 3 }}
       className="border-l border-white/15 pl-5 pb-6 mb-4 relative"
     >
       <span className="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-cyan-400" />
-
       <div className="flex items-center justify-between mb-1">
         <h3 className="font-medium">{role}</h3>
         <span className="text-xs text-white/50">{company}</span>
       </div>
-
       <p className="text-sm text-white/70">{text}</p>
     </motion.div>
   );

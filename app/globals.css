@@ -2,111 +2,124 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base */
 html {
   scroll-behavior: smooth;
+  background: #0b0f14;
+  color: white;
 }
 
-/* ===== Backgrounds ===== */
+/* ===== HERO BACKGROUND ===== */
+
 .bg-hero {
-  background:
-    radial-gradient(70% 60% at 20% 30%, #0b132b, transparent),
-    radial-gradient(55% 50% at 80% 70%, #1d3557, transparent),
-    #0a0f1f;
+  background: radial-gradient(60% 50% at 20% 30%, rgba(56,189,248,0.15), transparent),
+              radial-gradient(40% 40% at 80% 70%, rgba(6,182,212,0.12), transparent),
+              #0b0f14;
 }
 
-/* subtle noise */
-.bg-noise {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
-}
-
-/* tech grid */
-.bg-grid {
-  background:
-    linear-gradient(transparent, transparent 96%, rgba(255,255,255,.15) 98%),
-    linear-gradient(90deg, transparent, transparent 96%, rgba(255,255,255,.15) 98%);
-  background-size: 28px 28px;
-}
-
-/* ===== Animations ===== */
-@keyframes drift {
-  from { transform: translateX(-18px) scale(1); }
-  to   { transform: translateX(18px) scale(1.03); }
-}
 .animate-gradient {
-  animation: drift 20s ease-in-out infinite alternate;
+  animation: gradientMove 18s ease-in-out infinite alternate;
 }
 
-/* floating shapes */
+@keyframes gradientMove {
+  from { transform: scale(1) translateX(-10px); }
+  to { transform: scale(1.05) translateX(10px); }
+}
+
+/* ===== SOFT SECTION TRANSITION ===== */
+
+.section-fade {
+  position: relative;
+}
+
+.section-fade::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, #0b0f14);
+  pointer-events: none;
+}
+
+/* ===== FLOATING DECOR ===== */
+
+.floating {
+  animation: float 7s ease-in-out infinite;
+}
+
+.floating.delay {
+  animation-delay: 1.5s;
+}
+
 @keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-.floating-shape {
-  position: absolute;
-  width: 140px;
-  height: 140px;
-  border-radius: 999px;
-  filter: blur(30px);
-  animation: float 8s ease-in-out infinite;
-}
-.floating-shape.delay {
-  animation-delay: 1.8s;
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
 }
 
-/* bullets */
-@keyframes pulse {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.35); }
-}
-.bullet {
-  animation: pulse 3.5s ease-in-out infinite;
-}
+/* ===== REVEAL ANIMATION ===== */
 
-/* heading hover */
-.heading-hover:hover {
-  text-shadow: 0 0 28px rgba(125,211,252,.45);
-  transition: .3s ease;
-}
-
-/* parallax */
-.parallax-layer {
-  position: absolute;
-  inset: 0;
-  will-change: transform;
-  animation: parallax 16s ease-in-out infinite alternate;
-}
-.parallax-layer.slow {
-  animation-duration: 26s;
-}
-@keyframes parallax {
-  from { transform: translateY(-12px); }
-  to   { transform: translateY(12px); }
-}
-
-/* reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: .8s ease;
+  transform: translateY(24px);
+  transition: 0.7s ease;
 }
+
 .reveal.in-view {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ripple button */
+/* ===== BULLET ANIMATION ===== */
+
+.bullet {
+  animation: pulse 3.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); opacity: .8; }
+  50% { transform: scale(1.25); opacity: 1; }
+}
+
+/* ===== BUTTON RIPPLE ===== */
+
 .ripple-btn {
   position: relative;
   overflow: hidden;
 }
+
 .ripple-btn::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, rgba(255,255,255,.35), transparent 42%);
+  background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 60%);
   opacity: 0;
-  transition: .35s;
+  transition: 0.4s;
 }
-.ripple-btn:hover::after {
-  opacity: .3;
+
+.ripple-btn:active::after {
+  opacity: 1;
+  transform: scale(1.4);
+}
+
+/* ===== HEADING HOVER ===== */
+
+.heading-hover:hover {
+  text-shadow: 0 0 18px rgba(56,189,248,0.35);
+  transition: .3s;
+}
+
+/* ===== PRESENT BADGE ===== */
+
+.present-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(34,197,94,0.15);
+  color: rgb(134 239 172);
+  border: 1px solid rgba(34,197,94,0.35);
 }

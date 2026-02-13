@@ -1,88 +1,56 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect } from "react";
 
 export default function Home() {
-  /* scroll reveal */
   useEffect(() => {
     const els = document.querySelectorAll(".reveal");
+
     const obs = new IntersectionObserver(
-      (entries) =>
-        entries.forEach(
-          (e) => e.isIntersecting && e.target.classList.add("in-view")
-        ),
-      { threshold: 0.18 }
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("in-view");
+        });
+      },
+      { threshold: 0.15 }
     );
 
     els.forEach((el) => obs.observe(el));
     return () => obs.disconnect();
   }, []);
 
-  /* mouse parallax for hero */
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-
-  const bgX = useTransform(mx, [-50, 50], ["-4%", "4%"]);
-  const bgY = useTransform(my, [-50, 50], ["-4%", "4%"]);
-
   return (
-    <main className="relative min-h-screen overflow-hidden text-white">
+    <main className="min-h-screen bg-hero relative overflow-hidden text-white">
+
+      {/* floating decor */}
+      <div className="absolute top-24 left-10 h-20 w-20 rounded-full bg-sky-400/10 floating" />
+      <div className="absolute bottom-20 right-16 h-28 w-28 rounded-full bg-cyan-300/10 floating delay" />
 
       {/* ================= HERO ================= */}
-      <section
-        className="relative min-h-[90vh] flex items-center overflow-hidden"
-        onMouseMove={(e) => {
-          const rect = e.currentTarget.getBoundingClientRect();
-          mx.set(e.clientX - rect.left - rect.width / 2);
-          my.set(e.clientY - rect.top - rect.height / 2);
-        }}
-      >
-        {/* --- background layers --- */}
+      <section className="min-h-[80vh] relative flex items-center">
+        <div className="absolute inset-0 animate-gradient bg-hero" />
 
-        {/* aurora base */}
-        <motion.div
-          style={{ x: bgX, y: bgY }}
-          className="absolute inset-0 -z-30 bg-[radial-gradient(1200px_600px_at_20%_20%,rgba(56,189,248,0.25),transparent),radial-gradient(900px_500px_at_80%_70%,rgba(34,197,94,0.18),transparent),#0a0f1f]"
-        />
+        <div className="relative max-w-5xl mx-auto px-6 py-24">
 
-        {/* animated gradient veil */}
-        <motion.div
-          style={{ x: bgX, y: bgY }}
-          className="absolute inset-0 -z-20 animate-gradient bg-hero opacity-80"
-        />
-
-        {/* radial spotlight */}
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(600px_300px_at_50%_35%,rgba(255,255,255,0.08),transparent_70%)]" />
-
-        {/* particle grid */}
-        <div className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] bg-[radial-gradient(rgba(255,255,255,0.4)_1px,transparent_1px)] bg-[size:22px_22px]" />
-
-        {/* ================= CONTENT ================= */}
-        <div className="relative max-w-5xl mx-auto px-6 py-28">
-          {/* badges */}
           <motion.div
-            initial={{ opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-4 px-5 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
+            className="inline-flex items-center gap-5 px-5 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-md"
           >
-            {["Data-led", "Business-oriented", "Technology-enabled"].map(
-              (item, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-sky-400 bullet" />
-                  <span className="text-sm text-gray-300">{item}</span>
-                </div>
-              )
-            )}
+            {["Data-led", "Business-oriented", "Technology-enabled"].map((item) => (
+              <div key={item} className="flex items-center gap-2">
+                <span className="h-2 w-2 rounded-full bg-sky-400 bullet" />
+                <span className="text-gray-300 text-sm">{item}</span>
+              </div>
+            ))}
           </motion.div>
 
-          {/* heading (CONTENT TIDAK DIUBAH) */}
           <motion.h1
             initial={{ opacity: 0, x: 80 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mt-12 text-5xl md:text-6xl font-bold tracking-tight leading-tight heading-hover"
+            transition={{ duration: 0.7 }}
+            className="mt-10 text-5xl md:text-6xl font-bold leading-tight heading-hover"
           >
             <span className="block">I connect data, business, and</span>
             <span className="block mt-2">technology</span>
@@ -91,38 +59,28 @@ export default function Home() {
             </span>
           </motion.h1>
 
-          {/* description */}
-          <motion.p
-            initial={{ opacity: 0, y: 22 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-6 max-w-3xl text-lg text-gray-300"
-          >
+          <p className="mt-6 text-lg text-gray-300 max-w-3xl">
             I focus on aligning stakeholders, prioritizing with data, and delivering outcomes
             that move the business forward.
-          </motion.p>
+          </p>
 
-          {/* CTA */}
-          <motion.button
-            whileHover={{ scale: 1.06 }}
-            whileTap={{ scale: 0.96 }}
-            className="mt-12 inline-flex items-center gap-2 rounded-xl bg-sky-400 px-8 py-3 font-semibold text-black shadow-lg hover:shadow-cyan-400/40 transition ripple-btn"
-          >
+          <button className="mt-10 px-8 py-3 rounded-xl bg-sky-400 text-black font-semibold shadow-lg ripple-btn">
             Email Me →
-          </motion.button>
+          </button>
         </div>
       </section>
 
-      {/* ================= REST OF PAGE (UNCHANGED) ================= */}
+      {/* ================= ABOUT ================= */}
+      <section className="px-6 py-20 section-fade reveal">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
 
-      {/* ABOUT */}
-      <section className="px-6 py-20 reveal">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-xl font-medium mb-5">About</h2>
+            <h2 className="text-xl font-medium mb-4">About</h2>
+
             <p className="text-white/80 mb-4">
               Good products are built through clear judgment — not just execution.
             </p>
+
             <p className="text-white/70">
               My experience across operations and product leadership shaped how I
               approach decisions today: understanding constraints, aligning
@@ -130,7 +88,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             <DecorItem>Data guides decisions — it doesn’t replace judgment.</DecorItem>
             <DecorItem>Business impact is the north star.</DecorItem>
             <DecorItem>Technology is leverage, not the goal.</DecorItem>
@@ -138,11 +96,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW I WORK */}
+      {/* ================= HOW I WORK ================= */}
       <section className="px-6 py-20 reveal">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-xl font-medium mb-8">How I Work</h2>
-          <p className="text-white/70 mb-10">
+
+          <p className="text-white/70 mb-8">
             I work by balancing clarity, collaboration, and execution.
           </p>
 
@@ -162,6 +121,57 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ================= CAREER ================= */}
+      <section className="px-6 py-20 reveal">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl font-medium mb-10">Career Journey</h2>
+
+          <Timeline
+            role="Senior Product Manager"
+            company="Kota Hati"
+            text="Core member of product leadership — shaping OKRs, product roadmaps, and developing the product team."
+            present
+          />
+
+          <Timeline
+            role="Senior Product Manager"
+            company="Maxxi Tani"
+            text="Led sales and marketing product tools, improving distribution efficiency and performance."
+          />
+
+          <Timeline
+            role="Product Manager"
+            company="Agri Sparta"
+            text="Led product development from scratch to digitize agricultural processes and build scalable workflows."
+          />
+
+          <Timeline
+            role="Coordinator Trainee"
+            company="Alfamart"
+            text="Built foundations in operations, management discipline, and leadership in a large-scale organization."
+          />
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="px-6 py-24 text-center reveal">
+        <h2 className="text-2xl font-semibold mb-3">
+          Let’s build meaningful products.
+        </h2>
+
+        <p className="text-white/70 mb-8">
+          Open to conversations around product leadership, strategy, and execution.
+        </p>
+
+        <motion.a
+          href="mailto:ubaidillahym@gmail.com"
+          whileHover={{ scale: 1.03 }}
+          className="rounded-xl bg-white text-black px-7 py-3 text-sm font-medium"
+        >
+          Email Me
+        </motion.a>
+      </section>
     </main>
   );
 }
@@ -169,21 +179,32 @@ export default function Home() {
 /* helpers */
 
 function DecorItem({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="border-l border-white/15 pl-4 hover:border-cyan-400 transition">
-      {children}
-    </div>
-  );
+  return <div className="border-l border-white/15 pl-4">{children}</div>;
 }
 
 function Card({ title, text }: { title: string; text: string }) {
   return (
-    <motion.div
-      whileHover={{ y: -6 }}
-      className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition hover:bg-white/10"
-    >
-      <h3 className="mb-2 font-medium">{title}</h3>
+    <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/10 p-6 bg-white/5">
+      <h3 className="font-medium mb-2">{title}</h3>
       <p className="text-sm text-white/70">{text}</p>
     </motion.div>
+  );
+}
+
+function Timeline({ role, company, text, present }: any) {
+  return (
+    <div className="border-l border-white/15 pl-5 pb-6 mb-6 relative">
+      <span className="absolute -left-[7px] top-1 w-3 h-3 rounded-full bg-cyan-400" />
+
+      <div className="flex items-center justify-between mb-1">
+        <h3 className="font-medium flex items-center gap-2">
+          {role}
+          {present && <span className="present-badge">● Present</span>}
+        </h3>
+        <span className="text-xs text-white/50">{company}</span>
+      </div>
+
+      <p className="text-sm text-white/70">{text}</p>
+    </div>
   );
 }

@@ -1,0 +1,210 @@
+.contact { position: relative; }
+
+.header {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.hub {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Contact Grid */
+.contactGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  width: 100%;
+}
+
+.contactCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  min-height: 280px;
+}
+
+.contactCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(108, 99, 255, 0.1), transparent 70%);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.contactCard:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary-light);
+  transform: translateY(-12px);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(108, 99, 255, 0.15);
+}
+
+.contactCard:hover::before {
+  opacity: 1;
+}
+
+.cardContent {
+  display: flex;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.iconWrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(108, 99, 255, 0.08);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  transition: var(--transition);
+}
+
+.contactCard:hover .iconWrapper {
+  background: rgba(108, 99, 255, 0.15);
+  border-color: var(--primary-light);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contactLabel {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.contactValue {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  line-height: 1.1;
+}
+
+.contactDesc {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  z-index: 1;
+}
+
+.actionText {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.arrow {
+  font-size: 20px;
+  color: var(--text-muted);
+  transition: var(--transition);
+}
+
+.contactCard:hover .actionText,
+.contactCard:hover .arrow {
+  color: var(--primary-light);
+  transform: translateX(6px);
+}
+
+/* Quote Card */
+.quoteCard {
+  width: 100%;
+  padding: 60px 40px;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.03), rgba(0, 212, 170, 0.02));
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.quoteCard::before {
+  content: "“";
+  position: absolute;
+  top: -10px;
+  left: 30px;
+  font-size: 160px;
+  font-family: serif;
+  color: var(--primary-light);
+  opacity: 0.04;
+  line-height: 1;
+}
+
+.quote {
+  font-family: serif;
+  font-size: 26px;
+  font-style: italic;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  text-wrap: balance;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quoteName {
+  font-weight: 700;
+  color: var(--primary-light);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .contactCard {
+    padding: 32px 24px;
+    min-height: auto;
+  }
+  .contactValue {
+    font-size: 22px;
+  }
+  .quote {
+    font-size: 20px;
+  }
+}

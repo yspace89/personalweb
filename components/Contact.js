@@ -37,7 +37,7 @@ const content = {
         icon: "🔗", 
         label: "LinkedIn Professional", 
         value: "Let's Connect", 
-        href: "https://linkedin.com/in/yahya-ubaidillah",
+        href: "https://linkedin.com/in/yahyaux",
         desc: "Check my professional network and latest updates."
       },
     ],
@@ -76,7 +76,7 @@ const content = {
         icon: "🔗", 
         label: "LinkedIn Profesional", 
         value: "Mari Terhubung", 
-        href: "https://linkedin.com/in/yahya-ubaidillah",
+        href: "https://linkedin.com/in/yahyaux",
         desc: "Lihat jaringan profesional dan update terbaru Saya."
       },
     ],

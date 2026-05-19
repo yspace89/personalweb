@@ -5,7 +5,7 @@ import styles from "./About.module.css";
 const content = {
   en: {
     badge: "About Me",
-    title: "A Senior Product Manager who thinks in systems, builds them, delivers to users, and iterates.",
+    title: "A Senior Product Leader who thinks in systems, builds them, delivers to users, and iterates.",
     body1:
       "With 4+ years of experience leading product in fast-moving companies, I've owned the full product lifecycle — from discovery and stakeholder alignment, to PRD writing, sprint planning, and delivery. My deepest expertise lives in Sales Tools, CRM, ERP, and internal business systems: products that directly move revenue and operational efficiency.",
     body2:
@@ -41,7 +41,7 @@ const content = {
   },
   id: {
     badge: "Tentang Saya",
-    title: "Senior Product Manager yang tidak berhenti di membangun sampai produknya dipakai, diterima, dan terus berkembang.",
+    title: "Senior Product Leader yang tidak berhenti di membangun sampai produknya dipakai, diterima, dan terus berkembang.",
     body1:
       "Sudah 4+ tahun Saya pegang product di perusahaan yang bergerak cepat — dari discovery, alignment stakeholder, nulis PRD, sprint planning, sampai delivery. Domain yang paling Saya kuasai adalah sales tools, CRM, ERP, dan internal business system: produk-produk yang langsung berpengaruh ke revenue dan efisiensi operasional.",
     body2:

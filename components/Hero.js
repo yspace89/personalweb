@@ -5,26 +5,26 @@ import styles from "./Hero.module.css";
 
 const content = {
   en: {
-    badge: "Available for Freelance & Remote",
+    badge: "Available for Leadership Roles & Consulting",
     greeting: "Hi, I'm",
     title: "Yahya Ubaidillah",
-    role: "Senior Product Manager · AI Native",
-    tagline: "Transforming business strategy and user needs into high impact products.",
-    desc: "Helping startups and enterprises ship high impact products faster through sharp product strategy and intelligent workflow automation.",
-    cta1: "Hire Me",
-    cta2: "How We Collaborate",
-    skills: ["AI-Native Workflow", "Business Strategy", "People Management", "Vibe Coding", "Automation", "PRD & Roadmap"],
+    role: "Senior Product Leader & Consultant",
+    tagline: "ERP, CRM & AI-Automation Specialist",
+    desc: "A Senior Product Leader with a strong technical foundation in software engineering and product design. Proven track record in architecting complex, scalable operational systems (ERP/CRM) adaptable across any industry. I leverage AI-native workflows to ship high-impact products faster and drive measurable business outcomes.",
+    cta1: "Discuss Consulting",
+    cta2: "Discuss Leadership Role",
+    skills: ["AI-Native Workflow", "Product Strategy", "ERP & CRM Architect", "Vibe Coding", "Automation Architecture", "Cross-Functional Leadership"],
   },
   id: {
-    badge: "Tersedia untuk Freelance & Remote",
+    badge: "Tersedia untuk Peran Kepemimpinan & Konsultasi",
     greeting: "Halo, saya",
     title: "Yahya Ubaidillah",
-    role: "Senior Product Manager · AI Native",
-    tagline: "Mentransformasi kebutuhan bisnis dan pengguna menjadi produk nyata yang bernilai tinggi.",
-    desc: "Membantu startup & enterprise meluncurkan produk unggulan lebih cepat melalui strategi produk yang tajam dan otomasi workflow cerdas.",
-    cta1: "Hubungi Saya",
-    cta2: "Cara Berkolaborasi",
-    skills: ["AI-Native Workflow", "Business Strategy", "People Management", "Vibe Coding", "Automation", "PRD & Roadmap"],
+    role: "Senior Product Leader & Konsultan",
+    tagline: "Spesialis ERP, CRM & Otomasi AI",
+    desc: "Senior Product Leader dengan fondasi teknis kuat dalam software engineering dan product design. Terbukti andal merancang sistem operasional yang kompleks dan skalabel (ERP/CRM) yang adaptif untuk industri apa pun. Saya memanfaatkan alur kerja AI-native untuk merilis produk berdampak tinggi lebih cepat guna mendorong performa bisnis yang nyata.",
+    cta1: "Diskusikan Konsultasi",
+    cta2: "Diskusi Peran Kepemimpinan",
+    skills: ["AI-Native Workflow", "Strategi Produk", "Arsitektur ERP & CRM", "Vibe Coding", "Arsitektur Otomasi", "Kepemimpinan Lintas Fungsi"],
   },
 };
 
@@ -62,7 +62,7 @@ export default function Hero({ lang }) {
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </button>
-            <button className={styles.ctaOutline} onClick={() => scrollTo("collaboration")}>
+            <button className={styles.ctaOutline} onClick={() => scrollTo("contact")}>
               {t.cta2}
             </button>
           </div>

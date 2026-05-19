@@ -82,10 +82,13 @@
   to { opacity: 1; }
 }
 
-.greeting {
-  font-size: 1.1rem;
+.kicker {
+  font-size: 1.05rem;
   color: var(--text-muted);
+  font-style: italic;
+  font-weight: 500;
   margin-bottom: 8px;
+  letter-spacing: 0.02em;
   animation: fadeIn 0.6s ease 0.2s both;
 }
 
@@ -98,47 +101,32 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   line-height: 1.1;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   animation: fadeIn 0.6s ease 0.3s both;
 }
 
-.roleWrapper {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
-  animation: fadeIn 0.6s ease 0.35s both;
-}
-
-.roleIcon {
-  color: var(--primary);
-  font-size: 12px;
-}
-
-.role {
-  font-size: 1.1rem;
+.subHeadline {
+  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
   font-weight: 600;
-  color: var(--primary-light);
-  letter-spacing: 0.02em;
-}
-
-.tagline {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  font-weight: 500;
   color: var(--text-secondary);
-  margin-bottom: 16px;
-  line-height: 1.5;
-  animation: fadeIn 0.6s ease 0.4s both;
+  margin-bottom: 24px;
+  line-height: 1.4;
+  animation: fadeIn 0.6s ease 0.35s both;
   text-wrap: balance;
 }
 
 .desc {
   font-size: 1.05rem;
   color: var(--text-muted);
-  line-height: 1.8;
-  margin-bottom: 32px;
-  animation: fadeIn 0.6s ease 0.45s both;
-  max-width: 540px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  animation: fadeIn 0.6s ease 0.4s both;
+  max-width: 580px;
+}
+
+.descStrong {
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 /* CTAs */
@@ -197,7 +185,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  animation: fadeIn 0.6s ease 0.55s both;
+  margin-bottom: 32px;
+  animation: fadeIn 0.6s ease 0.45s both;
 }
 
 .skillBadge {
@@ -216,6 +205,48 @@
   color: var(--primary-light);
   border-color: var(--primary);
   background: rgba(108, 99, 255, 0.08);
+}
+
+/* Stats Section */
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+  animation: fadeIn 0.6s ease 0.5s both;
+  width: 100%;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(108, 99, 255, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.statNum {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
 }
 
 /* Avatar */
@@ -422,9 +453,19 @@
 
   .name { font-size: clamp(2rem, 10vw, 2.8rem); }
 
-  .tagline { font-size: 1rem; }
+  .subHeadline {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
 
   .desc { font-size: 0.95rem; }
+
+  .statsContainer {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto 24px;
+    text-align: left;
+  }
 
   .ctas {
     justify-content: center;

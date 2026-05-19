@@ -5,26 +5,38 @@ import styles from "./Hero.module.css";
 
 const content = {
   en: {
-    badge: "Available for Leadership Roles & Consulting",
-    greeting: "Hi, I'm",
+    kicker: "Senior Product Manager · ERP, CRM & AI Automation",
     title: "Yahya Ubaidillah",
-    role: "Senior Product Leader & Consultant",
-    tagline: "ERP, CRM & AI-Automation Specialist",
-    desc: "A Senior Product Leader with a strong technical foundation in software engineering and product design. Proven track record in architecting complex, scalable operational systems (ERP/CRM) adaptable across any industry. I leverage AI-native workflows to ship high-impact products faster and drive measurable business outcomes.",
-    cta1: "Discuss Consulting",
-    cta2: "Discuss Leadership Role",
-    skills: ["AI-Native Workflow", "Product Strategy", "ERP & CRM Architect", "Vibe Coding", "Automation Architecture", "Cross-Functional Leadership"],
+    subHeadline: "I turn complex business operations into products that actually work.",
+    bodyP1: "Most operational systems fail not because of bad engineering — but because no one truly understood the business problem first.",
+    bodyP2Start: "I bridge that gap: ",
+    bodyP2Highlight: "4+ years",
+    bodyP2End: " designing ERP, CRM, and internal tools from discovery to deployment, now accelerated with AI-native workflows.",
+    skills: ["ERP & CRM Architecture", "AI-Native Workflow", "N8N Automation", "Co-build Partnership", "Freelance Consulting"],
+    stats: [
+      { num: "4+", label: "Years shipping end-to-end products" },
+      { num: "3x", label: "Faster delivery with AI workflows" },
+      { num: "B2B+B2C", label: "Across industries & domains" },
+    ],
+    cta1: "Start a Consulting Project",
+    cta2: "Explore Co-build",
   },
   id: {
-    badge: "Tersedia untuk Peran Kepemimpinan & Konsultasi",
-    greeting: "Halo, saya",
+    kicker: "Senior Product Manager · ERP, CRM & Otomasi AI",
     title: "Yahya Ubaidillah",
-    role: "Senior Product Leader & Konsultan",
-    tagline: "Spesialis ERP, CRM & Otomasi AI",
-    desc: "Senior Product Leader dengan fondasi teknis kuat dalam software engineering dan product design. Terbukti andal merancang sistem operasional yang kompleks dan skalabel (ERP/CRM) yang adaptif untuk industri apa pun. Saya memanfaatkan alur kerja AI-native untuk merilis produk berdampak tinggi lebih cepat guna mendorong performa bisnis yang nyata.",
-    cta1: "Diskusikan Konsultasi",
-    cta2: "Diskusi Peran Kepemimpinan",
-    skills: ["AI-Native Workflow", "Strategi Produk", "Arsitektur ERP & CRM", "Vibe Coding", "Arsitektur Otomasi", "Kepemimpinan Lintas Fungsi"],
+    subHeadline: "Saya mengubah operasional bisnis yang rumit menjadi produk yang benar-benar berfungsi.",
+    bodyP1: "Sebagian besar sistem operasional gagal bukan karena rekayasa kode yang buruk — tetapi karena tidak ada yang benar-benar memahami masalah bisnisnya terlebih dahulu.",
+    bodyP2Start: "Saya menjembatani celah tersebut: ",
+    bodyP2Highlight: "4+ tahun",
+    bodyP2End: " merancang ERP, CRM, dan internal tools dari tahap penemuan hingga penerapan, kini diakselerasi dengan alur kerja berbasis AI.",
+    skills: ["Arsitektur ERP & CRM", "Alur Kerja AI-Native", "Otomasi N8N", "Kemitraan Co-build", "Konsultasi Freelance"],
+    stats: [
+      { num: "4+", label: "Tahun merilis produk end-to-end" },
+      { num: "3x", label: "Lebih cepat dengan alur kerja AI" },
+      { num: "B2B+B2C", label: "Di berbagai industri & domain" },
+    ],
+    cta1: "Mulai Proyek Konsultasi",
+    cta2: "Jelajahi Co-build",
   },
 };
 
@@ -43,16 +55,34 @@ export default function Hero({ lang }) {
       <div className={`container ${styles.inner}`}>
         {/* Left: Content */}
         <div className={`reveal ${styles.content}`}>
-          <span className={styles.greeting}>{t.greeting}</span>
+          <span className={styles.kicker}>{t.kicker}</span>
           <h1 className={styles.name}>{t.title}</h1>
+          <p className={styles.subHeadline}>{t.subHeadline}</p>
+          <p className={styles.desc}>{t.bodyP1}</p>
+          <p className={styles.desc}>
+            {t.bodyP2Start}
+            <strong className={styles.descStrong}>{t.bodyP2Highlight}</strong>
+            {t.bodyP2End}
+          </p>
 
-          <div className={styles.roleWrapper}>
-            <span className={styles.roleIcon}>◆</span>
-            <span className={styles.role}>{t.role}</span>
+          {/* Skill badges */}
+          <div className={styles.skillBadges}>
+            {t.skills.map((skill, i) => (
+              <span key={i} className={styles.skillBadge} style={{ animationDelay: `${i * 0.08}s` }}>
+                {skill}
+              </span>
+            ))}
           </div>
 
-          <p className={styles.tagline}>{t.tagline}</p>
-          <p className={styles.desc}>{t.desc}</p>
+          {/* Stats Section */}
+          <div className={styles.statsContainer}>
+            {t.stats.map((stat, i) => (
+              <div key={i} className={styles.statCard}>
+                <span className={styles.statNum}>{stat.num}</span>
+                <span className={styles.statLabel}>{stat.label}</span>
+              </div>
+            ))}
+          </div>
 
           {/* CTA Buttons */}
           <div className={styles.ctas}>
@@ -65,15 +95,6 @@ export default function Hero({ lang }) {
             <button className={styles.ctaOutline} onClick={() => scrollTo("contact")}>
               {t.cta2}
             </button>
-          </div>
-
-          {/* Skill badges */}
-          <div className={styles.skillBadges}>
-            {t.skills.map((skill, i) => (
-              <span key={i} className={styles.skillBadge} style={{ animationDelay: `${i * 0.08}s` }}>
-                {skill}
-              </span>
-            ))}
           </div>
         </div>
 

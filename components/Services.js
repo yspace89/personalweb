@@ -3,108 +3,49 @@ import { useEffect, useRef } from "react";
 import styles from "./Services.module.css";
 
 const content = {
-  en: {
-    badge: "Expertise & Value",
-    title: "Dual-Purpose <span>Product Pillars</span>",
-    subtitle: "Bringing high-impact strategic leadership to corporate teams and hands-on systems architecting to consulting projects.",
-    services: [
-      {
-        icon: "🎯",
-        title: "Product Strategy & Leadership",
-        desc: "Aligning long-term product vision with core business objectives. I lead cross-functional teams, orchestrate high-level roadmap planning, and build robust frameworks for sustainable product growth.",
-        tags: ["Product Vision", "Roadmapping", "Team Leadership", "GTM Strategy"],
-        highlights: [
-          "Aligning product vision with business goals",
-          "Long-term roadmap planning & execution",
-          "Cross-functional team leadership",
-          "KPI & OKR framework design"
-        ],
-        cta: "Discuss Leadership Role",
-        featured: false,
-      },
-      {
-        icon: "🏗️",
-        title: "End-to-End Product Architecture",
-        desc: "Designing data-heavy internal systems, CRM, and ERP software from scratch. I draft robust, high-clarity PRDs/BRDs and rapidly translate complex business requirements into clean, scalable MVPs for any industry.",
-        tags: ["ERP & CRM", "PRD/BRD Writing", "MVP Prototyping", "Systems Design"],
-        highlights: [
-          "Designing data-heavy operational systems",
-          "Drafting clear, robust PRDs & BRDs",
-          "Rapid MVP development & validation",
-          "Agnostic software architecture design"
-        ],
-        cta: "Hire for a Project",
-        featured: false,
-      },
-      {
-        icon: "⚡",
-        title: "AI & Workflow Automation",
-        desc: "Eliminating operational bottlenecks and manual overhead. I deploy advanced automation pipelines using n8n, Lark, Odoo, and custom AI stacks to slash operational friction and reduce development timelines.",
-        tags: ["n8n", "Lark Base", "API Integration", "AI Workflows"],
-        highlights: [
-          "Deploying advanced n8n automation pipelines",
-          "Operational process optimization",
-          "Custom integrations & webhook engineering",
-          "AI-powered operation streamlining"
-        ],
-        cta: "Discuss Automation",
-        featured: false,
-      },
-    ],
-  },
-  id: {
-    badge: "Keahlian & Nilai",
-    title: "Pilar <span>Produk Utama</span>",
-    subtitle: "Membawa kepemimpinan strategis berdampak tinggi untuk tim korporat serta perancangan sistem langsung untuk proyek konsultasi.",
-    services: [
-      {
-        icon: "🎯",
-        title: "Product Strategy & Leadership",
-        desc: "Menyelaraskan visi produk jangka panjang dengan tujuan bisnis utama. Saya memimpin tim lintas fungsi, merancang peta jalan (roadmap) tingkat tinggi, dan membangun kerangka kerja pertumbuhan produk.",
-        tags: ["Visi Produk", "Roadmapping", "Kepemimpinan Tim", "Strategi GTM"],
-        highlights: [
-          "Penyelarasan visi produk dengan gol bisnis",
-          "Perencanaan & eksekusi roadmap jangka panjang",
-          "Kepemimpinan tim lintas fungsi",
-          "Perancangan framework KPI & OKR"
-        ],
-        cta: "Diskusi Peran Kepemimpinan",
-        featured: false,
-      },
-      {
-        icon: "🏗️",
-        title: "End-to-End Product Architecture",
-        desc: "Merancang sistem internal padat data, software CRM, dan ERP dari nol. Saya menyusun PRD/BRD dengan kejelasan tinggi serta menerjemahkan kebutuhan bisnis yang rumit menjadi MVP yang bersih dan skalabel.",
-        tags: ["ERP & CRM", "Penulisan PRD/BRD", "Prototipe MVP", "Desain Sistem"],
-        highlights: [
-          "Merancang sistem operasional padat data",
-          "Menyusun PRD & BRD yang jelas & kuat",
-          "Pengembangan & validasi cepat untuk MVP",
-          "Desain arsitektur software yang agnostik"
-        ],
-        cta: "Hubungi untuk Proyek",
-        featured: false,
-      },
-      {
-        icon: "⚡",
-        title: "AI & Workflow Automation",
-        desc: "Menghilangkan hambatan operasional dan pekerjaan manual. Saya menerapkan pipeline otomasi canggih memakai n8n, Lark, Odoo, dan AI stack khusus untuk memangkas friksi dan mempercepat timeline development.",
-        tags: ["n8n", "Lark Base", "Integrasi API", "Workflow AI"],
-        highlights: [
-          "Penerapan pipeline otomasi n8n canggih",
-          "Optimasi proses operasional bisnis",
-          "Integrasi kustom & rekayasa webhook",
-          "Penyederhanaan operasi berbasis AI"
-        ],
-        cta: "Diskusikan Otomasi",
-        featured: false,
-      },
-    ],
-  },
+  title: "What I Actually Do",
+  subtitle: "Three areas where I create the most impact — whether you're hiring for a leadership role or bringing me in as a consultant.",
+  services: [
+    {
+      icon: "🎯",
+      title: "Product Strategy & Leadership",
+      tagline: "For companies that need a product leader, not just a PM.",
+      desc: "I translate ambiguous business goals into clear product vision — then make sure the team actually executes against it. My approach: pair long-term roadmap thinking with the ruthless prioritization needed to ship in the real world.",
+      highlights: [
+        "Vision-to-roadmap alignment with business goals",
+        "Cross-functional leadership (eng, design, ops, sales)",
+        "OKR and KPI frameworks that teams actually use",
+        "Stakeholder alignment without the politics spiral"
+      ],
+    },
+    {
+      icon: "🏗️",
+      title: "End-to-End Product Architecture",
+      tagline: "For businesses that need a system built, not just consulted on.",
+      desc: "I design data-heavy operational systems — ERP, CRM, internal tools — from first principles. I write PRDs and BRDs that engineers can build directly from, and I validate MVPs fast before committing to full build scope.",
+      highlights: [
+        "ERP & CRM architecture for any industry",
+        "PRDs and BRDs with engineering-ready clarity",
+        "Rapid MVP development and scope validation",
+        "Scalable system design, agnostic of tech stack"
+      ],
+    },
+    {
+      icon: "⚡",
+      title: "AI & Workflow Automation",
+      tagline: "For operations teams drowning in manual work.",
+      desc: "I build automation pipelines that eliminate repetitive bottlenecks — using n8n, Lark, Odoo, and custom AI stacks. If a human is doing something a workflow could handle, that's a problem I can fix.",
+      highlights: [
+        "N8n automation pipelines (trigger → action → done)",
+        "Cross-platform integrations via API and webhooks",
+        "AI-powered process optimization",
+        "Meaningful reduction in operational overhead"
+      ],
+    },
+  ],
 };
 
-export default function Services({ lang }) {
-  const t = content[lang];
+export default function Services() {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -122,21 +63,16 @@ export default function Services({ lang }) {
     return () => observer.disconnect();
   }, []);
 
-  const scrollToContact = () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-
   return (
-    <section id="collaboration" className={`section ${styles.services}`} ref={sectionRef}>
+    <section id="services" className={`section ${styles.services}`} ref={sectionRef}>
       <div className="container">
         <div className={`reveal ${styles.header}`}>
-          <h2
-            className="section-title"
-            dangerouslySetInnerHTML={{ __html: t.title }}
-          />
-          <p className={`section-subtitle ${styles.subtitle}`}>{t.subtitle}</p>
+          <h2 className="section-title">{content.title}</h2>
+          <p className={`section-subtitle ${styles.subtitle}`}>{content.subtitle}</p>
         </div>
 
         <div className={styles.grid}>
-          {t.services.map((svc, i) => (
+          {content.services.map((svc, i) => (
             <div
               key={i}
               className={`reveal card ${styles.serviceCard}`}
@@ -151,13 +87,8 @@ export default function Services({ lang }) {
             >
               <div className={styles.icon}>{svc.icon}</div>
               <h3 className={styles.title}>{svc.title}</h3>
+              <div className={styles.tagline}>{svc.tagline}</div>
               <p className={styles.desc}>{svc.desc}</p>
-
-              <div className={styles.tags}>
-                {svc.tags.map((tag, j) => (
-                  <span key={j} className="tag">{tag}</span>
-                ))}
-              </div>
 
               <ul className={styles.highlights}>
                 {svc.highlights.map((h, j) => (
@@ -167,7 +98,6 @@ export default function Services({ lang }) {
                   </li>
                 ))}
               </ul>
-
             </div>
           ))}
         </div>

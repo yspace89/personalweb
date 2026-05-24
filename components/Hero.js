@@ -116,32 +116,7 @@ export default function Hero({ lang }) {
             <div className={styles.avatarGlow} />
           </div>
 
-          {/* Floating cards */}
-          <div className={styles.floatCardsWrapper}>
-            <div className={`${styles.floatCard} ${styles.floatCard1}`}>
-              <span className={styles.floatIcon}>🎯</span>
-              <div>
-                <div className={styles.floatTitle}>4+ Years</div>
-                <div className={styles.floatSub}>Experience</div>
-              </div>
-            </div>
 
-            <div className={`${styles.floatCard} ${styles.floatCard2}`}>
-              <span className={styles.floatIcon}>⚡</span>
-              <div>
-                <div className={styles.floatTitle}>Automation</div>
-                <div className={styles.floatSub}>Scalable Workflow</div>
-              </div>
-            </div>
-
-            <div className={`${styles.floatCard} ${styles.floatCard3}`}>
-              <span className={styles.floatIcon}>🤖</span>
-              <div>
-                <div className={styles.floatTitle}>AI Native</div>
-                <div className={styles.floatSub}>Since day one</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 

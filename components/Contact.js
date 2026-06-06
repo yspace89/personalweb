@@ -1,30 +1,43 @@
 "use client";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./Contact.module.css";
 
+const EmailIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00D4AA" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="16" x="2" y="4" rx="2" />
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  </svg>
+);
+
+const LinkedInIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0077B5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
 const content = {
-  title: "Have a product problem? Let's define the solution.",
-  subtitle: "Whether you need a product leader to own roadmap and team, a consultant to architect your next system, or someone to automate what's slowing your ops down — I'm available to discuss.",
-  body: "Send a brief description of what you're working on. I respond within 24 hours.",
-  contacts: [
-    { 
-      icon: "✉️", 
-      label: "Direct Email", 
-      value: "ubaidillahym@gmail.com", 
-      href: "mailto:ubaidillahym@gmail.com",
-      desc: "Reach out for leadership roles, consulting gigs, or project proposals."
-    },
-    { 
-      icon: "🔗", 
-      label: "LinkedIn Professional", 
-      value: "linkedin.com/in/yahya-ubaidillah", 
-      href: "https://linkedin.com/in/yahya-ubaidillah",
-      desc: "Check my professional network, endorsements, and career history."
-    },
-  ],
+  en: {
+    title: "Have a product problem? Let's define the solution.",
+    subtitle: "Open for leadership roles, consulting engagements, and system architecture projects. I respond within 24 hours.",
+    contacts: [
+      { icon: <EmailIcon />, label: "DIRECT EMAIL", value: "ubaidillahym@gmail.com", href: "mailto:ubaidillahym@gmail.com" },
+      { icon: <LinkedInIcon />, label: "LINKEDIN", value: "yahya-ubaidillah", href: "https://linkedin.com/in/yahya-ubaidillah" }
+    ]
+  },
+  id: {
+    title: "Punya masalah produk? Mari tentukan solusinya.",
+    subtitle: "Terbuka untuk peran kepemimpinan, konsultasi, dan proyek arsitektur sistem. Saya membalas dalam waktu 24 jam.",
+    contacts: [
+      { icon: <EmailIcon />, label: "EMAIL LANGSUNG", value: "ubaidillahym@gmail.com", href: "mailto:ubaidillahym@gmail.com" },
+      { icon: <LinkedInIcon />, label: "LINKEDIN", value: "yahya-ubaidillah", href: "https://linkedin.com/in/yahya-ubaidillah" }
+    ]
+  }
 };
 
-export default function Contact() {
+export default function Contact({ lang }) {
+  const t = content[lang] || content.en;
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -46,29 +59,20 @@ export default function Contact() {
     <section id="contact" className={`section ${styles.contact}`} ref={sectionRef}>
       <div className="container">
         <div className={`reveal ${styles.header}`}>
-          <h2 className="section-title">{content.title}</h2>
-          <p className="section-subtitle">{content.subtitle}</p>
-          <p className="section-subtitle" style={{marginTop: '16px'}}>{content.body}</p>
+          <h2 className="section-title">{t.title}</h2>
+          <p className={styles.subtitle}>{t.subtitle}</p>
         </div>
 
         <div className={`reveal reveal-delay-1 ${styles.hub}`}>
-          {/* Direct contacts grid */}
-          <div className={styles.contactGrid}>
-            {content.contacts.map((c, i) => (
-              <a key={i} href={c.href} target="_blank" rel="noopener noreferrer" className={`${styles.contactCard}`}>
-                <div className={styles.cardContent}>
-                  <div className={styles.iconWrapper}>
-                    <span className={styles.contactIcon}>{c.icon}</span>
-                  </div>
-                  <div className={styles.contactInfo}>
-                    <div className={styles.contactLabel}>{c.label}</div>
-                    <div className={styles.contactValue}>{c.value}</div>
-                    <p className={styles.contactDesc}>{c.desc}</p>
-                  </div>
+          <div className={styles.chipsContainer}>
+            {t.contacts.map((c, i) => (
+              <a key={i} href={c.href} target="_blank" rel="noopener noreferrer" className={styles.contactChip}>
+                <div className={styles.chipIcon}>
+                  {c.icon}
                 </div>
-                <div className={styles.cardFooter}>
-                  <span className={styles.actionText}>Click to open</span>
-                  <span className={styles.arrow}>→</span>
+                <div className={styles.chipText}>
+                  <div className={styles.chipLabel}>{c.label}</div>
+                  <div className={styles.chipValue}>{c.value}</div>
                 </div>
               </a>
             ))}

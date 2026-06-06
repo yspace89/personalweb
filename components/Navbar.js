@@ -75,13 +75,7 @@ export default function Navbar({ lang, setLang }) {
             <span className={lang === "id" ? styles.activeLang : ""}>ID</span>
           </button>
 
-          {/* Hire Me CTA */}
-          <button className={styles.hireCta} onClick={() => scrollTo("contact")}>
-            <span>{lang === "en" ? "Hire Me" : "Hubungi Saya"}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M7 17L17 7M17 7H7M17 7v10"/>
-            </svg>
-          </button>
+          {/* Hire Me CTA removed */}
 
           {/* Hamburger */}
           <button
@@ -112,9 +106,7 @@ export default function Navbar({ lang, setLang }) {
               <span className={lang === "id" ? styles.activeLang : ""}>ID</span>
             </button>
           </div>
-          <button className={styles.mobileCta} onClick={() => scrollTo("contact")}>
-            {lang === "en" ? "Hire Me" : "Hubungi Saya"}
-          </button>
+          {/* Mobile CTA removed */}
       </div>
     </nav>
   );

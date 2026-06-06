@@ -6,7 +6,7 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 120px 0 80px;
+  padding: 160px 0 100px; /* Increased top/bottom padding for breathing room */
 }
 
 /* Orbs */
@@ -54,11 +54,12 @@
 /* Inner layout */
 .inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr; /* Slightly larger left column to spread text */
   align-items: center;
-  gap: 80px;
+  gap: 100px; /* Increased gap */
   position: relative;
   z-index: 1;
+  width: 100%;
 }
 
 /* Content */
@@ -106,22 +107,22 @@
 }
 
 .subHeadline {
-  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
+  font-size: clamp(1.3rem, 2.8vw, 1.65rem); /* Slightly larger */
   font-weight: 600;
   color: var(--text-secondary);
-  margin-bottom: 24px;
-  line-height: 1.4;
+  margin-bottom: 32px; /* Increased spacing */
+  line-height: 1.5;
   animation: fadeIn 0.6s ease 0.35s both;
   text-wrap: balance;
 }
 
 .desc {
-  font-size: 1.05rem;
+  font-size: 1.1rem; /* Slightly larger */
   color: var(--text-muted);
-  line-height: 1.7;
-  margin-bottom: 16px;
+  line-height: 1.8; /* Increased line-height */
+  margin-bottom: 20px; /* Increased spacing */
   animation: fadeIn 0.6s ease 0.4s both;
-  max-width: 580px;
+  max-width: 620px;
 }
 
 .descStrong {
@@ -132,9 +133,9 @@
 /* CTAs */
 .ctas {
   display: flex;
-  gap: 12px;
+  gap: 16px; /* Increased gap */
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 40px; /* Increased spacing */
   animation: fadeIn 0.6s ease 0.5s both;
 }
 
@@ -207,37 +208,144 @@
   background: rgba(108, 99, 255, 0.08);
 }
 
-/* Stats Section */
-.statsContainer {
+.floatingBadgesWrapper {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floatingBadge {
+  position: absolute;
+  z-index: 5;
+  background: var(--badge-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--badge-border);
+  white-space: nowrap;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  color: var(--badge-color) !important;
+  animation-name: badgeEntrance, badgeFloat;
+  animation-duration: 0.6s, 6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-direction: normal, alternate;
+  animation-fill-mode: both, none;
+}
+
+@keyframes badgeEntrance {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.85); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes badgeFloat {
+  0% { transform: translate(-50%, -50%); }
+  50% { transform: translate(-50%, calc(-50% - 5px)); }
+  100% { transform: translate(-50%, -50%); }
+}
+
+.skillBadgeIcon {
+  display: flex;
+  align-items: center;
+}
+
+/* Utilities */
+.mobileOnly { display: none; }
+.desktopOnly { display: block; }
+
+/* Badge Positioning (Desktop) */
+.badgePos0 { 
+  top: calc(50% - 105px); left: calc(50% - 182px); 
+  animation-delay: 0s, 0s;
+}
+.badgePos1 { 
+  top: 50%; left: calc(50% + 210px); 
+  animation-delay: 0.05s, 0.8s;
+}
+.badgePos2 { 
+  top: calc(50% + 105px); left: calc(50% - 182px); 
+  animation-delay: 0.10s, 1.6s;
+}
+.badgePos3 { 
+  top: calc(50% + 182px); left: calc(50% + 105px); 
+  animation-delay: 0.15s, 2.4s;
+}
+.badgePos4 { 
+  top: calc(50% - 210px); left: 50%; 
+  animation-delay: 0.20s, 3.2s;
+}
+
+/* Stats Banner */
+.statsBanner {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-bottom: 32px;
-  animation: fadeIn 0.6s ease 0.5s both;
+  gap: 24px;
+  margin-top: 80px; /* Separation from top content */
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s ease 0.6s both;
   width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
 .statCard {
-  background: rgba(255, 255, 255, 0.02);
+  background: linear-gradient(180deg, rgba(108, 99, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
   border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  padding: 16px 20px;
+  border-top: 1px solid var(--primary);
+  border-radius: 16px;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.5;
 }
 
 .statCard:hover {
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(108, 99, 255, 0.25);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(180deg, rgba(108, 99, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border-color: rgba(108, 99, 255, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(108, 99, 255, 0.15);
+}
+
+.statHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.statIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(108, 99, 255, 0.1);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  color: var(--primary-light);
 }
 
 .statNum {
   font-family: var(--font-heading);
-  font-size: 1.6rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: 800;
   color: #fff;
   line-height: 1.1;
@@ -304,23 +412,19 @@
   to { transform: rotate(360deg); }
 }
 
-.avatarRing {
+.orbitRing1, .orbitRing2, .orbitRing3 {
   position: absolute;
-  width: 320px;
-  height: 320px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 50%;
-  border: 1px dashed rgba(108, 99, 255, 0.2);
-  animation: spin-slow 20s linear infinite;
+  border: 0.5px solid rgba(99, 102, 241, 0.10);
+  pointer-events: none;
 }
 
-.avatarRing2 {
-  position: absolute;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  border: 1px dashed rgba(0, 212, 170, 0.1);
-  animation: spin-slow 30s linear infinite reverse;
-}
+.orbitRing1 { width: 280px; height: 280px; }
+.orbitRing2 { width: 420px; height: 420px; }
+.orbitRing3 { width: 560px; height: 560px; }
 
 /* Floating cards */
 .floatCard {
@@ -458,12 +562,12 @@
     margin-bottom: 20px;
   }
 
-  .desc { font-size: 0.95rem; }
+  .desc { font-size: 1rem; }
 
-  .statsContainer {
+  .statsBanner {
     grid-template-columns: 1fr;
     max-width: 420px;
-    margin: 0 auto 24px;
+    margin: 60px auto 24px;
     text-align: left;
   }
 
@@ -488,18 +592,55 @@
   .avatarWrapper {
     order: 1;
     width: 100%;
+    flex-direction: column;
+    gap: 40px;
   }
 
   .avatar { width: 200px; height: 200px; }
-  .avatarRing { width: 240px; height: 240px; }
-  .avatarRing2 { width: 300px; height: 300px; }
+  .orbitRing1 { width: 240px; height: 240px; }
+  .orbitRing2 { width: 320px; height: 320px; }
+  .orbitRing3 { width: 400px; height: 400px; }
 
-  /* Float cards: reposition so they don't spill outside */
-  .avatarWrapper {
+  /* Utilities */
+  .mobileOnly { display: flex; }
+  .desktopOnly { display: none !important; }
+
+  /* Mobile Marquee */
+  .mobileMarqueeWrapper {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .marqueeContent {
     display: flex;
-    flex-direction: column;
+    gap: 16px;
+    width: max-content;
+    animation: scroll-left 25s linear infinite;
+    padding: 10px 0;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 8px)); } /* 8px is half the gap */
+  }
+
+  .marqueeBadge {
+    display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 8px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background: var(--badge-bg, rgba(13, 15, 26, 0.6));
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--badge-border, rgba(108, 99, 255, 0.4));
+    border-radius: 12px;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   }
 
   .floatCard {
@@ -535,7 +676,8 @@
 @media (max-width: 390px) {
   .name { font-size: 2rem; }
   .avatar { width: 160px; height: 160px; }
-  .avatarRing { width: 190px; height: 190px; }
-  .avatarRing2 { width: 240px; height: 240px; }
+  .orbitRing1 { width: 200px; height: 200px; }
+  .orbitRing2 { width: 280px; height: 280px; }
+  .orbitRing3 { width: 360px; height: 360px; }
 }
 

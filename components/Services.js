@@ -3,49 +3,52 @@ import { useEffect, useRef } from "react";
 import styles from "./Services.module.css";
 
 const content = {
-  title: "What I Actually Do",
-  subtitle: "Three areas where I create the most impact — whether you're hiring for a leadership role or bringing me in as a consultant.",
-  services: [
-    {
-      icon: "🎯",
-      title: "Product Strategy & Leadership",
-      tagline: "For companies that need a product leader, not just a PM.",
-      desc: "I translate ambiguous business goals into clear product vision — then make sure the team actually executes against it. My approach: pair long-term roadmap thinking with the ruthless prioritization needed to ship in the real world.",
-      highlights: [
-        "Vision-to-roadmap alignment with business goals",
-        "Cross-functional leadership (eng, design, ops, sales)",
-        "OKR and KPI frameworks that teams actually use",
-        "Stakeholder alignment without the politics spiral"
-      ],
-    },
-    {
-      icon: "🏗️",
-      title: "End-to-End Product Architecture",
-      tagline: "For businesses that need a system built, not just consulted on.",
-      desc: "I design data-heavy operational systems — ERP, CRM, internal tools — from first principles. I write PRDs and BRDs that engineers can build directly from, and I validate MVPs fast before committing to full build scope.",
-      highlights: [
-        "ERP & CRM architecture for any industry",
-        "PRDs and BRDs with engineering-ready clarity",
-        "Rapid MVP development and scope validation",
-        "Scalable system design, agnostic of tech stack"
-      ],
-    },
-    {
-      icon: "⚡",
-      title: "AI & Workflow Automation",
-      tagline: "For operations teams drowning in manual work.",
-      desc: "I build automation pipelines that eliminate repetitive bottlenecks — using n8n, Lark, Odoo, and custom AI stacks. If a human is doing something a workflow could handle, that's a problem I can fix.",
-      highlights: [
-        "N8n automation pipelines (trigger → action → done)",
-        "Cross-platform integrations via API and webhooks",
-        "AI-powered process optimization",
-        "Meaningful reduction in operational overhead"
-      ],
-    },
-  ],
+  en: {
+    title: "What I Actually Do",
+    subtitle: "Three areas where I create the most impact — whether you're hiring for a leadership role or bringing me in as a consultant.",
+    services: [
+      {
+        icon: "🎯", title: "Product Strategy & Leadership", tagline: "For companies that need a product leader, not just a PM.",
+        desc: "I translate ambiguous business goals into clear product vision — then make sure the team actually executes against it. My approach: pair long-term roadmap thinking with the ruthless prioritization needed to ship in the real world.",
+        highlights: ["Vision-to-roadmap alignment with business goals", "Cross-functional leadership (eng, design, ops, sales)", "OKR and KPI frameworks that teams actually use", "Stakeholder alignment without the politics spiral"]
+      },
+      {
+        icon: "🏗️", title: "End-to-End Product Architecture", tagline: "For businesses that need a system built, not just consulted on.",
+        desc: "I design data-heavy operational systems — ERP, CRM, internal tools — from first principles. I write PRDs and BRDs that engineers can build directly from, and I validate MVPs fast before committing to full build scope.",
+        highlights: ["ERP & CRM architecture for any industry", "PRDs and BRDs with engineering-ready clarity", "Rapid MVP development and scope validation", "Scalable system design, agnostic of tech stack"]
+      },
+      {
+        icon: "⚡", title: "AI & Workflow Automation", tagline: "For operations teams drowning in manual work.",
+        desc: "I build automation pipelines that eliminate repetitive bottlenecks — using n8n, Lark, Odoo, and custom AI stacks. If a human is doing something a workflow could handle, that's a problem I can fix.",
+        highlights: ["N8n automation pipelines (trigger → action → done)", "Cross-platform integrations via API and webhooks", "AI-powered process optimization", "Meaningful reduction in operational overhead"]
+      }
+    ]
+  },
+  id: {
+    title: "Apa yang Sebenarnya Saya Lakukan",
+    subtitle: "Tiga area di mana saya menciptakan dampak terbesar — baik Anda mempekerjakan saya untuk peran kepemimpinan atau sebagai konsultan.",
+    services: [
+      {
+        icon: "🎯", title: "Strategi & Kepemimpinan Produk", tagline: "Untuk perusahaan yang butuh pemimpin produk, bukan sekadar PM.",
+        desc: "Saya menerjemahkan tujuan bisnis yang ambigu menjadi visi produk yang jelas — lalu memastikan tim benar-benar mengeksekusinya. Pendekatan saya: memadukan pemikiran roadmap jangka panjang dengan prioritas kejam untuk merilis produk di dunia nyata.",
+        highlights: ["Penyelarasan visi ke roadmap dengan tujuan bisnis", "Kepemimpinan lintas fungsi (teknik, desain, operasional)", "Kerangka kerja OKR dan KPI yang benar-benar dipakai", "Penyelarasan stakeholder tanpa drama politik"]
+      },
+      {
+        icon: "🏗️", title: "Arsitektur Produk End-to-End", tagline: "Untuk bisnis yang butuh sistem yang dibangun dari awal.",
+        desc: "Saya merancang sistem operasional (ERP, CRM, alat internal) dari prinsip dasar. Saya menulis PRD dan BRD yang dapat langsung dikerjakan engineer, serta memvalidasi MVP dengan cepat sebelum berkomitmen pada pengembangan skala penuh.",
+        highlights: ["Arsitektur ERP & CRM untuk industri apa pun", "PRD dan BRD dengan kejelasan siap-rekayasa", "Pengembangan MVP cepat dan validasi cakupan", "Desain sistem yang dapat diskalakan"]
+      },
+      {
+        icon: "⚡", title: "Otomatisasi AI & Alur Kerja", tagline: "Untuk tim operasional yang kewalahan dengan pekerjaan manual.",
+        desc: "Saya membangun pipeline otomatisasi yang menghilangkan hambatan berulang menggunakan n8n, Lark, Odoo, dan AI khusus. Jika manusia melakukan tugas yang bisa ditangani sistem, itu adalah masalah yang bisa saya selesaikan.",
+        highlights: ["Pipeline otomatisasi N8n", "Integrasi lintas platform via API dan webhook", "Pengoptimalan proses bertenaga AI", "Pengurangan beban operasional secara drastis"]
+      }
+    ]
+  }
 };
 
-export default function Services() {
+export default function Services({ lang }) {
+  const t = content[lang] || content.en;
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -67,12 +70,12 @@ export default function Services() {
     <section id="services" className={`section ${styles.services}`} ref={sectionRef}>
       <div className="container">
         <div className={`reveal ${styles.header}`}>
-          <h2 className="section-title">{content.title}</h2>
-          <p className={`section-subtitle ${styles.subtitle}`}>{content.subtitle}</p>
+          <h2 className="section-title">{t.title}</h2>
+          <p className={`section-subtitle ${styles.subtitle}`}>{t.subtitle}</p>
         </div>
 
         <div className={styles.grid}>
-          {content.services.map((svc, i) => (
+          {t.services.map((svc, i) => (
             <div
               key={i}
               className={`reveal card ${styles.serviceCard}`}

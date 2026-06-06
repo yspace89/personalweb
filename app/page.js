@@ -9,6 +9,7 @@ import Services from "@/components/Services";
 import UseCases from "@/components/UseCases";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import LinkedInToast from "@/components/LinkedInToast";
 
 export default function Home() {
   const [lang, setLang] = useState("en");
@@ -25,13 +26,15 @@ export default function Home() {
       {/* Main content */}
       <main>
         <Hero lang={lang} />
-        <HowIWork />
-        <ImpactStats />
-        <WorkShipped />
-        <Services />
-        <UseCases />
-        <Contact />
+        <HowIWork lang={lang} />
+        <WorkShipped lang={lang} />
+        <Services lang={lang} />
+        <UseCases lang={lang} />
+        <Contact lang={lang} />
       </main>
+
+      {/* Floating Notification */}
+      <LinkedInToast />
 
       {/* Footer */}
       <Footer />

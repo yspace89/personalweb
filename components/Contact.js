@@ -23,7 +23,7 @@ const content = {
     subtitle: "Open for leadership roles, consulting engagements, and system architecture projects. I respond within 24 hours.",
     contacts: [
       { icon: <EmailIcon />, label: "DIRECT EMAIL", value: "ubaidillahym@gmail.com", href: "mailto:ubaidillahym@gmail.com" },
-      { icon: <LinkedInIcon />, label: "LINKEDIN", value: "yahya-ubaidillah", href: "https://linkedin.com/in/yahya-ubaidillah" }
+      { icon: <LinkedInIcon />, label: "LINKEDIN", value: "Yahya Ubaidillah", href: "https://www.linkedin.com/in/yahyaux" }
     ]
   },
   id: {
@@ -31,7 +31,7 @@ const content = {
     subtitle: "Terbuka untuk peran kepemimpinan, konsultasi, dan proyek arsitektur sistem. Saya membalas dalam waktu 24 jam.",
     contacts: [
       { icon: <EmailIcon />, label: "EMAIL LANGSUNG", value: "ubaidillahym@gmail.com", href: "mailto:ubaidillahym@gmail.com" },
-      { icon: <LinkedInIcon />, label: "LINKEDIN", value: "yahya-ubaidillah", href: "https://linkedin.com/in/yahya-ubaidillah" }
+      { icon: <LinkedInIcon />, label: "LINKEDIN", value: "Yahya Ubaidillah", href: "https://www.linkedin.com/in/yahyaux" }
     ]
   }
 };
